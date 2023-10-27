@@ -24,7 +24,10 @@ class UserUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required', 'string', 'min:2', 'max:64'],
+            'name' => ['nullable', 'string', 'min:2', 'max:64'],
+            'email' => ['nullable', 'email', 'min:2', 'max:64'],
+            'phone' => ['nullable', 'string', 'min:2', 'max:64'],
+            'city' => ['nullable', 'string', 'min:2', 'max:64'],
         ];
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\User;
+namespace App\Services;
 
 use App\Models\User;
 use App\Traits\ApiResponser;
@@ -8,18 +8,16 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Log;
 use Symfony\Component\HttpFoundation\Response;
 
-class UserService
+class AuthService
 {
     use ApiResponser;
 
     public function login(array $data): JsonResponse
     {
-        $credentials = [
+        $token = auth()->attempt([
             'phone' => $data['phone'],
             'password' => $data['password'],
-        ];
-
-        $token = auth()->attempt($credentials);
+        ]);
 
         if (!$token) {
             Log::info($data['phone'] . '.login Phone or password is not correct');
@@ -38,4 +36,14 @@ class UserService
         ]);
     }
 
+    public function logout(): JsonResponse
+    {
+        $user = auth()->user();
+
+        auth()->logout();
+
+        return $this->successResponse([
+            'message' => __('user successfully logged out'),
+        ]);
+    }
 }

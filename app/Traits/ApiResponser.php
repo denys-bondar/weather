@@ -5,7 +5,6 @@ namespace App\Traits;
 use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
-use function Sentry\captureException;
 
 trait ApiResponser
 {
@@ -19,8 +18,6 @@ trait ApiResponser
         $message = '',
         $code = ''
     ): JsonResponse {
-        captureException($exception);
-
         $message = $message ?: $exception->getMessage();
         $code = $code ?: $exception->getCode();
 
