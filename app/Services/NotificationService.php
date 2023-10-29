@@ -20,20 +20,18 @@ class NotificationService
      * @return JsonResponse
      * @throws \Twilio\Exceptions\TwilioException
      */
-    public function sendSms(User $user): JsonResponse
+    public function sendSms(User $user, $text = null): void
     {
         $client = new Client();
 
-        $ss  = $client->messages->create(
+        $client->messages->create(
             $user->phone,
             array(
                 // A Twilio phone number you purchased at twilio.com/console
-                'from' => "+13346038347",
+                'from' => env("TWILIO_FROM"),
                 // the body of the text message you'd like to send
-                'body' => 'Hey Ketav! It’s good to see you after long time!'
+                'body' => $text
             )
         );
-        dd($user->phone);
     }
-
 }

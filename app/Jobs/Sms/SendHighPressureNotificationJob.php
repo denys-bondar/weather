@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Jobs;
+namespace App\Jobs\Sms;
 
 use App\Models\User;
 use App\Services\NotificationService;
@@ -13,7 +13,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Log;
 
-class SendHighUVRaysNotificationJob implements ShouldQueue
+class SendHighPressureNotificationJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
@@ -40,7 +40,7 @@ class SendHighUVRaysNotificationJob implements ShouldQueue
     public function handle(): void
     {
         try {
-            (new NotificationService())->sendSms($this->user);
+            (new NotificationService())->sendSms($this->user, __("pressure"));
 
             Log::channel('job')->notice('Job create sms send - done: ' . $this->user->phone);
         } catch(ConnectException $e) {

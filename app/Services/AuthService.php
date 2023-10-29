@@ -26,7 +26,7 @@ class AuthService
 
         if (!$token) {
             Log::info($data['phone'] . '.login Phone or password is not correct');
-            return $this->errorResponse(__('user_service_phone_or_password_is_not_correct'), Response::HTTP_UNAUTHORIZED);
+            return $this->errorResponse(__('phone_or_password_is_not_correct'), Response::HTTP_UNAUTHORIZED);
         }
 
         $user = User::query()
@@ -36,7 +36,7 @@ class AuthService
         return $this->successResponse([
             'access_token' => $token,
             'token_type' => 'bearer',
-            'expires_in' => auth()->factory()->getTTL() * 60,
+            'expires_in' => auth()->factory()->getTTL() * 6000,
             'user' => $user,
         ]);
     }
@@ -51,7 +51,7 @@ class AuthService
         auth()->logout();
 
         return $this->successResponse([
-            'message' => __('user successfully logged out'),
+            'message' => __('user_successfully_logged_out'),
         ]);
     }
 }
