@@ -16,6 +16,9 @@ class WeatherService
     {
     }
 
+    /**
+     * @return JsonResponse
+     */
     public function getWeatherByCity(): JsonResponse
     {
         try{

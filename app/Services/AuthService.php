@@ -12,6 +12,11 @@ class AuthService
 {
     use ApiResponser;
 
+    /**
+     * @param array $data
+     * @return JsonResponse
+     * @throws \JsonException
+     */
     public function login(array $data): JsonResponse
     {
         $token = auth()->attempt([
@@ -36,6 +41,9 @@ class AuthService
         ]);
     }
 
+    /**
+     * @return JsonResponse
+     */
     public function logout(): JsonResponse
     {
         $user = auth()->user();

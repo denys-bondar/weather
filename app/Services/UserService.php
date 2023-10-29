@@ -16,6 +16,10 @@ class UserService
         return $this->successResponse($this->getCurrentUser());
     }
 
+    /**
+     * @param array $data
+     * @return JsonResponse
+     */
     public function update(array $data): JsonResponse
     {
         $user = $this->getCurrentUser();
@@ -31,6 +35,10 @@ class UserService
     }
 
 
+    /**
+     * @param array $data
+     * @return JsonResponse
+     */
     public function register(array $data): JsonResponse
     {
         // Хеширование пароля
