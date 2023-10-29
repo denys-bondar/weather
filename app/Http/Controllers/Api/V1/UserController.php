@@ -15,6 +15,16 @@ class UserController extends Controller
     {
     }
 
+    /**
+     * @OA\Get (
+     *     path="/api/v1/user",
+     *     operationId="Get user info",
+     *     tags={"User"},
+     *     summary="get authorized user",
+     *     security={{"bearer_token":{}}},
+     *     @OA\Response(response=200, description="OK")
+     * )
+     */
     public function me(): JsonResponse
     {
         return $this->userService->me();
