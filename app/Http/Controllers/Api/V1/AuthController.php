@@ -40,24 +40,26 @@ class AuthController extends Controller
      *     @OA\Response(
      *         response=200,
      *         description="OK",
-     *         @OA\JsonContent(example={
-     * "data": {
-     * "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vd2VhdGhlci1hcHAudGVzdC9hcGkvdjEvbG9naW4iLCJpYXQiOjE2OTg2MTM1OTMsImV4cCI6MTY5ODYxNzE5MywibmJmIjoxNjk4NjEzNTkzLCJqdGkiOiI4elpHYnR1TVlwd01tWlgwIiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.Xh8THd6tQIgHlQ2r8yoTqPQ0LZRghEej0dJm_sv5XKw",
-     * "token_type": "bearer",
-     * "expires_in": 360000,
-     * "user": {
-     * "id": 1,
-     * "name": "Alexis Gleason",
-     * "email": "fisher.nellie@example.com",
-     * "phone": "+380954474265",
-     * "city": "Florida",
-     * "email_verified_at": "2023-10-29T08:33:28.000000Z",
-     * "created_at": "2023-10-29T08:33:29.000000Z",
-     * "updated_at": "2023-10-29T08:33:29.000000Z"
-     * }
-     * },
-     * "code": 200
-     * })
+     *         @OA\JsonContent(
+     *             example={
+     *                 "data": {
+     *                     "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...",
+     *                     "token_type": "bearer",
+     *                     "expires_in": 360000,
+     *                     "user": {
+     *                         "id": 1,
+     *                         "name": "Alexis Gleason",
+     *                         "email": "fisher.nellie@example.com",
+     *                         "phone": "+380954474265",
+     *                         "city": "Florida",
+     *                         "email_verified_at": "2023-10-29T08:33:28.000000Z",
+     *                         "created_at": "2023-10-29T08:33:29.000000Z",
+     *                         "updated_at": "2023-10-29T08:33:29.000000Z"
+     *                     }
+     *                 },
+     *                 "code": 200
+     *             }
+     *         )
      *     )
      * )
      */
