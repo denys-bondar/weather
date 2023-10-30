@@ -22,21 +22,16 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::prefix('v1')->group(function () {
-    Route::post('login', [AuthController::class, 'login']);
-    Route::post('register', [UserController::class, 'register']);
-
+    Route::post('login', [AuthController::class, 'login'])->name('api-v1.login');
+    Route::post('register', [UserController::class, 'register'])->name('api-v1.register');
 
     Route::middleware('auth:api')->group(function () {
 
         Route::prefix('user')->group(function () {
-            Route::get('', [UserController::class, 'me']);
-            Route::patch('update', [UserController::class, 'updateUser']);
-            Route::patch('update', [UserController::class, 'updateUser']);
-
-            Route::get('logout', [AuthController::class, 'logout']);
-
-            Route::get('weather', [WeatherController::class, 'getWeatherByCity']);
+            Route::get('', [UserController::class, 'me'])->name('api-v1.user.info');
+            Route::patch('update', [UserController::class, 'updateUser'])->name('api-v1.user.update');
+            Route::get('weather', [WeatherController::class, 'getWeatherByCity'])->name('api-v1.user.weather');
+            Route::get('logout', [AuthController::class, 'logout'])->name('api-v1.logout');;
         });
-
     });
 });
