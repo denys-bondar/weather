@@ -1,0 +1,259 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Weather API",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/v1/login": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Get jwt token",
+                "operationId": "bae68d1c55329ecb6e41f48285840c8f",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "phone": {
+                                        "type": "string",
+                                        "example": "+380951234567"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "phone": "+380951234567",
+                                    "password": "88888888"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "data": {
+                                        "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...",
+                                        "token_type": "bearer",
+                                        "expires_in": 360000,
+                                        "user": {
+                                            "id": 1,
+                                            "name": "Alexis Gleason",
+                                            "email": "fisher.nellie@example.com",
+                                            "phone": "+380954474265",
+                                            "city": "Florida",
+                                            "email_verified_at": "2023-10-29T08:33:28.000000Z",
+                                            "created_at": "2023-10-29T08:33:29.000000Z",
+                                            "updated_at": "2023-10-29T08:33:29.000000Z"
+                                        }
+                                    },
+                                    "code": 200
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/user/logout": {
+            "get": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Logout user",
+                "operationId": "logout",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/user": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "get authorized user",
+                "operationId": "Get user info",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/user/update": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Register new user",
+                "operationId": "97320b459af68c9bd198f003b45801c6",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "phone": {
+                                        "type": "string",
+                                        "example": "+380951234567"
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "example": "asd@asd.gg"
+                                    },
+                                    "city": {
+                                        "type": "string",
+                                        "example": "Lviv"
+                                    },
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Petro"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "phone": "+380951234567",
+                                    "name": "Petro",
+                                    "email": "asd@asd.gg",
+                                    "city": "Lviv"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "data": {
+                                        "message": "succes",
+                                        "user": {
+                                            "id": 1,
+                                            "name": "Alexis Gleason",
+                                            "email": "fisher.nellie@example.com",
+                                            "phone": "+380954474265",
+                                            "city": "Florida",
+                                            "email_verified_at": "2023-10-29T08:33:28.000000Z",
+                                            "created_at": "2023-10-29T08:33:29.000000Z",
+                                            "updated_at": "2023-10-29T08:33:29.000000Z"
+                                        }
+                                    },
+                                    "code": 200
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Update user info",
+                "operationId": "6eac68474eb94731ea5bced838210185",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "phone": {
+                                        "type": "string",
+                                        "example": "+380951234567"
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "example": "asd@asd.gg"
+                                    },
+                                    "city": {
+                                        "type": "string",
+                                        "example": "Lviv"
+                                    },
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Petro"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "phone": "+380951234567",
+                                    "name": "Petro",
+                                    "email": "asd@asd.gg",
+                                    "city": "Lviv"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": {
+                                    "data": {
+                                        "message": "succes",
+                                        "user": {
+                                            "id": 1,
+                                            "name": "Alexis Gleason",
+                                            "email": "fisher.nellie@example.com",
+                                            "phone": "+380954474265",
+                                            "city": "Florida",
+                                            "email_verified_at": "2023-10-29T08:33:28.000000Z",
+                                            "created_at": "2023-10-29T08:33:29.000000Z",
+                                            "updated_at": "2023-10-29T08:33:29.000000Z"
+                                        }
+                                    },
+                                    "code": 200
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/user/weather": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "get weather by city of user",
+                "operationId": "GetWeatherByCityUser",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        }
+    }
+}
